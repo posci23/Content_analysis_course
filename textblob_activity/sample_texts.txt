@@ -1,0 +1,153 @@
+================================================================================
+              SAMPLE TEXTS FOR CONTENT ANALYSIS PRACTICE
+================================================================================
+
+Below are political texts you can copy-paste into TextBlob, into an AI chatbot,
+or save as .txt files to analyze with the scripts in the prompts file.
+
+You can also find each text as a separate file in the /sample_texts/ folder
+in the main class directory.
+
+
+================================================================================
+TEXT 1: CLIMATE POLICY SPEECH
+================================================================================
+
+My fellow citizens, we stand at a crossroads that will define our nation for
+generations to come. The science is clear: our planet is warming at an
+unprecedented rate, and the consequences of inaction are catastrophic. This is
+not a distant threat — it is happening now, in our communities, to our families.
+
+Last year alone, we saw record-breaking wildfires, devastating hurricanes, and
+unprecedented flooding. Our farmers face longer droughts. Our coastal cities
+face rising seas. The data from our leading research institutions confirms what
+we can see with our own eyes: climate change is the defining challenge of our
+time.
+
+But I want to be clear about something. Addressing climate change is not just
+an environmental issue — it is an economic opportunity. The clean energy sector
+already employs over three million Americans, and that number is growing every
+year. When we invest in renewable energy, we are investing in jobs. Good-paying
+jobs that cannot be outsourced.
+
+We must also be honest about the transition ahead. Communities that have built
+their livelihoods around fossil fuels deserve our support and our respect. That
+is why our plan includes a twenty billion dollar investment in workforce
+retraining, community development, and economic diversification for coal and
+oil regions. No worker will be left behind.
+
+Our competitors understand this. China is investing hundreds of billions in
+solar and wind technology. Europe has committed to carbon neutrality. If we
+fail to act, we will not only face environmental catastrophe — we will lose the
+economic race of the twenty-first century to nations that had the courage to
+lead.
+
+Some say we cannot afford to act. I say we cannot afford not to. The cost of
+inaction — in lives lost, in economic damage, in national security threats —
+far exceeds the cost of investment. Every dollar we spend on clean energy today
+saves four dollars in climate damage tomorrow. That is not ideology. That is
+arithmetic.
+
+Together, we can build a future that is cleaner, more prosperous, and more
+secure. A future where every community thrives, where every worker has
+opportunity, and where we leave our children a planet worth inheriting. The
+time for debate is over. The time for action is now.
+
+
+================================================================================
+TEXT 2: ECONOMIC POLICY SPEECH
+================================================================================
+
+Thank you. It is an honor to address you today about the issue that matters
+most to every family in this country: our economy. For too long, hardworking
+Americans have been told to wait — wait for growth, wait for opportunity, wait
+for their government to get out of the way. That waiting is over.
+
+Let me share some facts. Unemployment stands at six point two percent. Wages
+have been stagnant for a decade while costs for housing, healthcare, and
+education have skyrocketed. Small businesses — the backbone of our economy —
+face a regulatory burden that stifles innovation and growth. Meanwhile, large
+corporations pay a lower effective tax rate than a teacher or a firefighter.
+
+This is not the free market at work. This is a system that has been rigged by
+special interests and defended by politicians who benefit from the status quo.
+We need fundamental reform, not incremental tinkering.
+
+Our plan is straightforward. First, we will cut taxes for working families and
+small businesses. A family earning less than seventy-five thousand dollars a
+year will see their tax burden reduced by twenty percent. Second, we will
+simplify regulations — not eliminate them, but make them smarter, faster, and
+less burdensome for entrepreneurs. Third, we will invest in infrastructure:
+roads, bridges, broadband, and the digital economy of the future.
+
+Critics will say we cannot afford tax cuts and investment at the same time.
+But history proves them wrong. When President Kennedy cut taxes in nineteen
+sixty-three, the economy grew by five percent the following year. When we
+invested in the interstate highway system, it generated ten dollars in
+economic activity for every dollar spent. Smart fiscal policy pays for itself.
+
+We must also confront the threat of unfair trade practices. Our trading
+partners have manipulated their currencies, subsidized their industries, and
+flooded our markets with cheap goods. This has cost us millions of
+manufacturing jobs. We will negotiate tougher trade deals that put American
+workers first, and we will enforce them with real consequences for violations.
+
+But economic policy cannot succeed in isolation. A strong economy requires a
+healthy, educated workforce. That is why our plan includes expanded access to
+vocational training and community college, investments in mental health
+services, and affordable childcare so that every parent who wants to work can
+work.
+
+The American economy has always been the engine of global prosperity. It has
+lifted billions out of poverty and created the highest standard of living in
+human history. But that engine needs maintenance. It needs investment. And
+most of all, it needs leaders who will fight for the people, not the powerful.
+That is the commitment I make to you today.
+
+
+================================================================================
+TEXT 3: NEWS HEADLINES (same event, different outlets)
+================================================================================
+
+The following headlines are all about the same event: a government announcement
+of a new carbon tax policy. Notice how different outlets frame it differently.
+
+FOX NEWS: Government's Radical Carbon Tax Will Crush Small Businesses and Raise Energy Costs for Millions
+CNN: White House Unveils Ambitious Carbon Tax Plan Aimed at Cutting Emissions 40% by 2035
+BBC: US Announces Carbon Pricing Scheme in Major Climate Policy Shift
+NEW YORK TIMES: Carbon Tax Proposal Faces Uphill Battle in Divided Congress
+REUTERS: US Carbon Tax Plan Sets Price at $50 Per Ton, Industry Groups Push Back
+THE GUARDIAN: Historic Carbon Tax Marks Turning Point in America's Climate Fight, Activists Say
+WALL STREET JOURNAL: Markets React to Carbon Tax Announcement: Energy Stocks Tumble, Renewables Surge
+BREITBART: Biden's Job-Killing Carbon Tax: Another Attack on American Energy Independence
+AL JAZEERA: United States Joins Growing List of Nations Adopting Carbon Pricing Mechanisms
+WASHINGTON POST: Inside the Carbon Tax Debate: How the White House Built Its Climate Coalition
+
+
+================================================================================
+TEXT 4: SHORT STATEMENTS FOR QUICK PRACTICE
+================================================================================
+
+Use these short statements to practice individually. Each one takes seconds
+to analyze with TextBlob.
+
+STATEMENT A (positive, low subjectivity):
+"The new infrastructure bill will create thousands of jobs and improve
+transportation across the country."
+
+STATEMENT B (negative, high subjectivity):
+"The government's reckless spending has destroyed our economy and threatens
+the future of hardworking families."
+
+STATEMENT C (neutral, factual):
+"The Senate voted 52-48 to approve the budget resolution on Tuesday evening."
+
+STATEMENT D (mixed sentiment):
+"While the unemployment rate has dropped, wages remain stagnant and inequality
+continues to grow at an alarming pace."
+
+STATEMENT E (appeal to identity):
+"We are Americans. We do not retreat from challenges — we rise to meet them.
+Together, we will build a stronger, more united nation."
+
+================================================================================

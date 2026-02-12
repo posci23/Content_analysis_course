@@ -1,0 +1,510 @@
+================================================================================
+       SELF-GUIDED ACTIVITY: CONTENT ANALYSIS WITH AI & PYTHON
+          Prompts, Scripts, and Expected Results for Beginners
+================================================================================
+
+This file is your step-by-step guide. Work through each section IN ORDER —
+they go from easiest (no coding at all) to more advanced (writing scripts).
+
+Each section has:
+  - WHAT TO DO (step-by-step instructions)
+  - WHAT TO TYPE or PASTE (exact text to use)
+  - WHAT YOU SHOULD SEE (expected output so you know it's working)
+
+BEFORE YOU START:
+  Open Google Antigravity and open THIS folder (the textblob_activity
+  folder). Go to File > Open Folder and select it. Everything you need
+  is inside this folder.
+
+
+================================================================================
+SECTION 1: AI CHAT PROMPTS FOR CONTENT ANALYSIS (Easiest — no coding)
+================================================================================
+
+All you need is a browser and access to an AI chatbot (ChatGPT, Claude,
+Gemini, etc). No coding, no installation, nothing to download.
+
+The key idea: VAGUE prompts give INCONSISTENT results.
+STRUCTURED prompts give REPRODUCIBLE results.
+
+------------------------------------------------------------------------
+EXERCISE 1A: The Bad Prompt (do this first)
+------------------------------------------------------------------------
+
+Copy-paste this into a chatbot and run it THREE TIMES:
+
+    Analyze this statement:
+    "The government must invest in renewable energy to protect future
+    generations, while also ensuring that fossil fuel workers are not
+    left behind in the transition."
+
+Write down what you got each time. Did the answers change? How much?
+
+------------------------------------------------------------------------
+EXERCISE 1B: The Good Prompt (now try this)
+------------------------------------------------------------------------
+
+Copy-paste this ENTIRE block into the same chatbot. Run it THREE TIMES:
+
+    You are a political text coding assistant. Your ONLY job is to classify
+    the political statement below using the EXACT format specified. Do not
+    add commentary or explanation.
+
+    STATEMENT:
+    "The government must invest in renewable energy to protect future
+    generations, while also ensuring that fossil fuel workers are not
+    left behind in the transition."
+
+    CODING INSTRUCTIONS:
+    Classify on each dimension. Use ONLY the permitted values.
+
+    1. PRIMARY_POLICY_DOMAIN: [energy | healthcare | economy | security | education | environment | other]
+    2. IDEOLOGICAL_LEANING: [left | center-left | center | center-right | right]
+    3. TONE: [assertive | conciliatory | neutral | adversarial]
+    4. TARGET_AUDIENCE: [general_public | party_base | opposition | industry | international]
+    5. FRAME: [economic | moral | security | rights | pragmatic]
+
+    OUTPUT FORMAT (strictly follow this — no extra text):
+    PRIMARY_POLICY_DOMAIN: [your answer]
+    IDEOLOGICAL_LEANING: [your answer]
+    TONE: [your answer]
+    TARGET_AUDIENCE: [your answer]
+    FRAME: [your answer]
+
+WHAT YOU SHOULD SEE (same or very similar every time):
+    PRIMARY_POLICY_DOMAIN: energy
+    IDEOLOGICAL_LEANING: center-left
+    TONE: conciliatory
+    TARGET_AUDIENCE: general_public
+    FRAME: economic
+
+WHY THIS WORKS:
+  The structured prompt acts like a CODEBOOK in traditional content analysis.
+  It tells the AI exactly what categories to use, what values are allowed,
+  and what format to return. This is what makes it reproducible.
+
+------------------------------------------------------------------------
+EXERCISE 1C: Coding a Speech Paragraph by Paragraph
+------------------------------------------------------------------------
+
+Open the file called speech_climate.txt (in this folder).
+For EACH paragraph, copy-paste it into this prompt:
+
+    You are a content analysis coder for a political science research
+    project. Apply the codebook below to the text provided. Return ONLY
+    the completed coding sheet.
+
+    CODEBOOK:
+    - TOPIC: [climate | economy | immigration | healthcare | education | security | governance | social_justice | other]
+    - POLICY_POSITION: [support_expansion | support_status_quo | support_reduction | ambiguous | not_applicable]
+    - RHETORICAL_STRATEGY: [appeal_to_evidence | appeal_to_values | appeal_to_fear | appeal_to_authority | appeal_to_identity | narrative_anecdote | none]
+    - ACTOR_REFERENCED: [government | opposition | citizens | business | international | media | none]
+    - SENTIMENT: [positive | negative | mixed | neutral]
+    - URGENCY: [crisis | important | routine | dismissive]
+
+    TEXT TO CODE:
+    [PASTE ONE PARAGRAPH HERE]
+
+    OUTPUT FORMAT:
+    TOPIC:
+    POLICY_POSITION:
+    RHETORICAL_STRATEGY:
+    ACTOR_REFERENCED:
+    SENTIMENT:
+    URGENCY:
+
+DO THIS:
+  - Code all 7 paragraphs
+  - Compare your results with a classmate
+  - Count how many codes match — that is your "inter-coder reliability"
+
+------------------------------------------------------------------------
+EXERCISE 1D: Comparing Media Headlines
+------------------------------------------------------------------------
+
+Copy-paste this entire block into a chatbot:
+
+    You are coding news headlines for a political science media analysis
+    study. For each headline, apply the codebook and return results as
+    a table.
+
+    CODEBOOK:
+    - FRAMING: [conflict | human_interest | economic | morality | responsibility | horse_race]
+    - VALENCE_TOWARD_GOVERNMENT: [positive | negative | neutral]
+    - SENSATIONALISM: [high | moderate | low]
+    - FOCUS: [policy_substance | political_strategy | personality | consequences]
+
+    HEADLINES:
+    1. FOX NEWS: Government's Radical Carbon Tax Will Crush Small Businesses and Raise Energy Costs for Millions
+    2. CNN: White House Unveils Ambitious Carbon Tax Plan Aimed at Cutting Emissions 40% by 2035
+    3. BBC: US Announces Carbon Pricing Scheme in Major Climate Policy Shift
+    4. BREITBART: Biden's Job-Killing Carbon Tax: Another Attack on American Energy Independence
+    5. THE GUARDIAN: Historic Carbon Tax Marks Turning Point in America's Climate Fight, Activists Say
+
+    Respond ONLY with this table:
+    | # | OUTLET | FRAMING | VALENCE | SENSATIONALISM | FOCUS |
+    |---|--------|---------|---------|----------------|-------|
+
+WHAT YOU SHOULD SEE:
+  - Fox News and Breitbart → NEGATIVE valence, HIGH sensationalism, CONFLICT framing
+  - BBC → NEUTRAL valence, LOW sensationalism, POLICY_SUBSTANCE focus
+  - Guardian → POSITIVE valence, MODERATE sensationalism
+
+THINK ABOUT:
+  Same event, very different framing. This is exactly what content
+  analysis is designed to detect and measure systematically.
+
+
+================================================================================
+SECTION 2: TERMINAL COMMANDS — COUNTING WORDS (Intermediate)
+================================================================================
+
+Now we move to the terminal. These commands are fully DETERMINISTIC —
+same input, same output, every single time. No AI involved.
+
+HOW TO OPEN THE TERMINAL:
+  In Google Antigravity, press Ctrl + ` (the backtick key, above Tab).
+  A terminal panel will appear at the bottom of the screen.
+
+IMPORTANT: Make sure your terminal says the textblob_activity folder.
+  You should see something like:
+    PS C:\...\textblob_activity>
+  If not, the commands below will not find the files.
+
+------------------------------------------------------------------------
+EXERCISE 2A: Count the total words in a speech
+------------------------------------------------------------------------
+
+Type this in the terminal and press Enter:
+
+    (Get-Content .\speech_climate.txt | Measure-Object -Word).Words
+
+WHAT YOU SHOULD SEE:
+  A single number (around 450-500). This is the total word count.
+
+------------------------------------------------------------------------
+EXERCISE 2B: Find the 20 most frequent words
+------------------------------------------------------------------------
+
+Type this in the terminal:
+
+    (Get-Content .\speech_climate.txt) -split '\W+' | Where-Object { $_.Length -gt 3 } | Group-Object -NoElement | Sort-Object Count -Descending | Select-Object -First 20
+
+WHAT YOU SHOULD SEE:
+  A list of the 20 most common words (longer than 3 letters) with counts.
+  Words like "energy", "climate", "invest" should appear near the top.
+
+THINK ABOUT:
+  What do the top words tell you about the speech's priorities?
+
+------------------------------------------------------------------------
+EXERCISE 2C: Count specific political keywords
+------------------------------------------------------------------------
+
+Type this in the terminal (all on one line):
+
+    $text = Get-Content .\speech_climate.txt -Raw; foreach ($word in @("climate","economy","jobs","future","energy","security","freedom","tax")) { $count = ([regex]::Matches($text, "\b$word\b", 'IgnoreCase')).Count; Write-Output "${word}: $count" }
+
+WHAT YOU SHOULD SEE:
+  A list like:
+    climate: 5
+    economy: 2
+    jobs: 3
+    ...
+
+  These numbers are 100% reproducible. Every student gets the same counts.
+
+------------------------------------------------------------------------
+EXERCISE 2D: Compare keywords across two speeches
+------------------------------------------------------------------------
+
+Type this in the terminal (all on one line):
+
+    $text1 = Get-Content .\speech_climate.txt -Raw; $text2 = Get-Content .\speech_economy.txt -Raw; Write-Output "Keyword | Climate | Economy"; Write-Output "--------+---------+--------"; foreach ($w in @("climate","economy","jobs","future","energy","security","tax","growth")) { $c1 = ([regex]::Matches($text1, "\b$w\b", 'IgnoreCase')).Count; $c2 = ([regex]::Matches($text2, "\b$w\b", 'IgnoreCase')).Count; Write-Output "$w | $c1 | $c2" }
+
+WHAT YOU SHOULD SEE:
+  A table comparing how often each keyword appears in each speech.
+  "climate" should be much higher in the climate speech;
+  "tax" and "economy" should be higher in the economy speech.
+
+
+================================================================================
+SECTION 3: YOUR FIRST PYTHON WITH TEXTBLOB (More Advanced)
+================================================================================
+
+Now we use Python and TextBlob. This is more powerful than terminal
+commands because TextBlob "understands" language, not just keywords.
+
+------------------------------------------------------------------------
+EXERCISE 3-SETUP: Install TextBlob (one time only)
+------------------------------------------------------------------------
+
+In the terminal, type:
+
+    pip install textblob
+
+Wait for it to finish. Then type:
+
+    python -m textblob.download_corpora
+
+Wait for it to download. You only do this once.
+
+------------------------------------------------------------------------
+EXERCISE 3A: Interactive Python — Sentiment of a Single Statement
+------------------------------------------------------------------------
+
+In the terminal, type:
+
+    python
+
+You should see >>> appear. Now type each line and press Enter:
+
+    from textblob import TextBlob
+
+    text = TextBlob("The new infrastructure bill will create thousands of jobs and improve transportation across the country.")
+
+    print(text.sentiment)
+
+WHAT YOU SHOULD SEE:
+    Sentiment(polarity=0.13..., subjectivity=0.37...)
+
+  This means:
+    polarity 0.13  = slightly positive (scale is -1.0 to +1.0)
+    subjectivity 0.37 = mostly factual (scale is 0.0 to 1.0)
+
+NOW TRY A NEGATIVE STATEMENT:
+
+    text2 = TextBlob("The government's reckless spending has destroyed our economy and threatens the future of hardworking families.")
+
+    print(text2.sentiment)
+
+WHAT YOU SHOULD SEE:
+  A NEGATIVE polarity (below 0) and HIGHER subjectivity (closer to 1).
+
+NOW TRY NOUN PHRASES:
+
+    print(text.noun_phrases)
+
+WHAT YOU SHOULD SEE:
+  A list like: ['new infrastructure bill', 'transportation']
+  These are the key topics TextBlob automatically identifies.
+
+NOW TRY PART-OF-SPEECH TAGS:
+
+    print(text.tags)
+
+WHAT YOU SHOULD SEE:
+  Pairs like: [('The', 'DT'), ('new', 'JJ'), ('infrastructure', 'NN'), ...]
+  JJ = adjective, NN = noun, VB = verb.
+  (See what_is_textblob.txt in the textblob_guide folder for tag meanings.)
+
+TO EXIT PYTHON:
+
+    exit()
+
+------------------------------------------------------------------------
+EXERCISE 3B: Analyzing a Full Speech (Write a Script)
+------------------------------------------------------------------------
+
+STEP 1 — In Google Antigravity, click File > New File
+STEP 2 — Save it as: my_analysis.py (save it in this same folder)
+STEP 3 — Paste this code into the file:
+
+---------- COPY EVERYTHING BELOW THIS LINE ----------
+
+from textblob import TextBlob
+
+with open("speech_climate.txt", "r") as f:
+    speech = f.read()
+
+paragraphs = [p.strip() for p in speech.split("\n\n") if p.strip()]
+
+print("PARAGRAPH-BY-PARAGRAPH SENTIMENT ANALYSIS")
+print("=" * 55)
+print(f"{'#':>3} | {'Polarity':>9} | {'Subjectivity':>12} | Tone")
+print(f"----+-----------+--------------+--------")
+
+for i, para in enumerate(paragraphs, 1):
+    blob = TextBlob(para)
+    pol = blob.sentiment.polarity
+    sub = blob.sentiment.subjectivity
+
+    if pol > 0.1:
+        tone = "POSITIVE"
+    elif pol < -0.1:
+        tone = "NEGATIVE"
+    else:
+        tone = "NEUTRAL"
+
+    print(f"  {i} | {pol:>+8.3f}  | {sub:>11.3f}  | {tone}")
+
+full_blob = TextBlob(speech)
+print(f"\nOVERALL SPEECH:")
+print(f"  Polarity:     {full_blob.sentiment.polarity:+.3f}")
+print(f"  Subjectivity: {full_blob.sentiment.subjectivity:.3f}")
+
+print(f"\nTOP NOUN PHRASES (what the speaker talks about):")
+for phrase in full_blob.noun_phrases[:15]:
+    print(f"  - {phrase}")
+
+---------- COPY EVERYTHING ABOVE THIS LINE ----------
+
+STEP 4 — In the terminal, type:
+
+    python my_analysis.py
+
+WHAT YOU SHOULD SEE:
+  A table showing each paragraph's sentiment. The speech should start
+  negative (warning about climate threats) and end positive (hope/action).
+
+------------------------------------------------------------------------
+EXERCISE 3C: Comparing Media Headlines (Write a Script)
+------------------------------------------------------------------------
+
+STEP 1 — Create a new file called: headline_analysis.py (in this folder)
+STEP 2 — Paste this code:
+
+---------- COPY EVERYTHING BELOW THIS LINE ----------
+
+from textblob import TextBlob
+
+headlines = {
+    "FOX NEWS": "Government's Radical Carbon Tax Will Crush Small Businesses and Raise Energy Costs for Millions",
+    "CNN": "White House Unveils Ambitious Carbon Tax Plan Aimed at Cutting Emissions 40% by 2035",
+    "BBC": "US Announces Carbon Pricing Scheme in Major Climate Policy Shift",
+    "NY TIMES": "Carbon Tax Proposal Faces Uphill Battle in Divided Congress",
+    "REUTERS": "US Carbon Tax Plan Sets Price at $50 Per Ton, Industry Groups Push Back",
+    "GUARDIAN": "Historic Carbon Tax Marks Turning Point in America's Climate Fight, Activists Say",
+    "WSJ": "Markets React to Carbon Tax Announcement: Energy Stocks Tumble, Renewables Surge",
+    "BREITBART": "Biden's Job-Killing Carbon Tax: Another Attack on American Energy Independence",
+    "AL JAZEERA": "United States Joins Growing List of Nations Adopting Carbon Pricing Mechanisms",
+    "WASH POST": "Inside the Carbon Tax Debate: How the White House Built Its Climate Coalition",
+}
+
+print("MEDIA FRAMING ANALYSIS: Carbon Tax Announcement")
+print("=" * 65)
+print(f"{'Outlet':<12} | {'Polarity':>9} | {'Subjectivity':>12} | Lean")
+print(f"{'-'*12}-+-{'-'*9}-+-{'-'*12}-+-{'-'*12}")
+
+for outlet, headline in headlines.items():
+    blob = TextBlob(headline)
+    pol = blob.sentiment.polarity
+    sub = blob.sentiment.subjectivity
+
+    if pol > 0.05:
+        lean = "POSITIVE"
+    elif pol < -0.05:
+        lean = "NEGATIVE"
+    else:
+        lean = "NEUTRAL"
+
+    print(f"{outlet:<12} | {pol:>+8.3f}  | {sub:>11.3f}  | {lean}")
+
+    nps = blob.noun_phrases
+    if nps:
+        print(f"{'':14} Key phrases: {nps}")
+    print()
+
+---------- COPY EVERYTHING ABOVE THIS LINE ----------
+
+STEP 3 — Run it:
+
+    python headline_analysis.py
+
+WHAT YOU SHOULD SEE:
+  Fox News & Breitbart → NEGATIVE (words like "crush", "radical", "job-killing")
+  CNN & Guardian → POSITIVE ("ambitious", "historic")
+  BBC, Reuters, Al Jazeera → closer to NEUTRAL
+
+THINK ABOUT:
+  "Radical carbon tax" vs "historic carbon tax" — same policy, same day,
+  completely different framing. This is what content analysis measures.
+
+
+================================================================================
+SECTION 4: COMPARING ALL THREE METHODS (Putting It Together)
+================================================================================
+
+You have now used THREE different content analysis methods:
+
+  METHOD 1 — AI Chat Prompts (Section 1)
+    What it gives you:  Categorical codes (like a human codebook)
+    Reproducibility:    MOSTLY consistent if prompt is structured
+    Strengths:          Understands context, nuanced framing
+    Weaknesses:         Can vary between runs, not fully transparent
+
+  METHOD 2 — Terminal Word Counts (Section 2)
+    What it gives you:  Raw keyword frequencies
+    Reproducibility:    100% — same input always gives same output
+    Strengths:          Fast, perfectly reproducible, transparent
+    Weaknesses:         No understanding of context or meaning
+
+  METHOD 3 — TextBlob / Python NLP (Section 3)
+    What it gives you:  Numerical sentiment scores, noun phrases, POS tags
+    Reproducibility:    100% — same input always gives same output
+    Strengths:          Understands some language structure, reproducible
+    Weaknesses:         Trained on product reviews (not political text),
+                        struggles with sarcasm and negation
+
+------------------------------------------------------------------------
+FINAL EXERCISE: Analyze One Paragraph with All Three Methods
+------------------------------------------------------------------------
+
+Pick PARAGRAPH 3 of the climate speech:
+  "But I want to be clear about something. Addressing climate change is
+  not just an environmental issue — it is an economic opportunity..."
+
+1. AI PROMPT METHOD
+   Use the prompt from Exercise 1C. What topic, sentiment, and rhetorical
+   strategy does the chatbot assign?
+
+2. TERMINAL METHOD
+   Which keywords appear? ("climate", "economy", "jobs", "energy"?)
+
+3. TEXTBLOB METHOD
+   In the terminal, type python and then:
+
+       from textblob import TextBlob
+       para = TextBlob("But I want to be clear about something. Addressing climate change is not just an environmental issue — it is an economic opportunity. The clean energy sector already employs over three million Americans, and that number is growing every year. When we invest in renewable energy, we are investing in jobs. Good-paying jobs that cannot be outsourced.")
+       print("Polarity:", para.sentiment.polarity)
+       print("Subjectivity:", para.sentiment.subjectivity)
+       print("Noun phrases:", para.noun_phrases)
+
+THEN ASK YOURSELF:
+  - Where do the three methods AGREE?
+  - Where do they DISAGREE? Why?
+  - Which would you trust most in a research paper?
+  - If you had to analyze 10,000 paragraphs, which would you use?
+
+
+================================================================================
+SECTION 5: REFLECTION QUESTIONS
+================================================================================
+
+1. What makes a prompt "deterministic"? Why did the structured prompts
+   in Section 1 produce more consistent results than a vague question?
+
+2. TextBlob was trained on product reviews, not political speeches.
+   How might this affect its accuracy? Can you think of a political
+   word it might misinterpret?
+
+3. If you were publishing a research paper using AI-assisted content
+   analysis, what would you need to report for transparency?
+
+4. Fox News and The Guardian describe the SAME policy but score very
+   differently on sentiment. What does this tell us about media framing?
+
+5. When would you choose TextBlob over an AI chatbot? When would you
+   choose the chatbot over TextBlob?
+
+================================================================================
+FILES IN THIS FOLDER
+================================================================================
+
+  prompts_and_exercises.txt  — This file (instructions and prompts)
+  sample_texts.txt           — All texts collected in one browsable file
+  speech_climate.txt         — Climate policy speech (used in exercises)
+  speech_economy.txt         — Economic policy speech (used in exercises)
+  headlines.txt              — News headlines from 10 outlets (same event)
+
+================================================================================

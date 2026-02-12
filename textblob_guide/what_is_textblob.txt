@@ -1,0 +1,198 @@
+================================================================================
+                    TEXTBLOB — A BEGINNER'S GUIDE
+              For Political Science Content Analysis
+================================================================================
+
+WHAT IS TEXTBLOB?
+-----------------
+TextBlob is a free Python library that lets you analyze text automatically.
+You give it a piece of text (a speech, a headline, an article), and it can
+tell you things about that text — like whether it sounds positive or negative,
+what the main topics are, or what types of words the author uses most.
+
+Think of it as a research assistant that can read thousands of texts and
+give you consistent measurements every single time.
+
+
+WHY SHOULD I CARE?
+------------------
+In political science, we often do "content analysis" — systematically reading
+texts to identify patterns. For example:
+  - Is this speech mostly positive or negative?
+  - Does this news outlet frame immigration differently than that one?
+  - Does this politician talk more about "freedom" or "equality"?
+
+Doing this by hand is slow and subjective. TextBlob automates parts of it,
+giving you numbers you can compare and report in research.
+
+
+WHAT CAN TEXTBLOB DO?
+---------------------
+
+1. SENTIMENT ANALYSIS
+   What it does:  Gives every text two scores:
+                  • Polarity:     -1.0 (very negative) to +1.0 (very positive)
+                  • Subjectivity:  0.0 (very factual)  to  1.0 (very opinionated)
+
+   Example:
+     "The economy is growing and jobs are plentiful."
+      → Polarity: +0.20 (slightly positive)
+      → Subjectivity: 0.40 (somewhat factual)
+
+     "The government's reckless policies destroyed our economy."
+      → Polarity: -0.50 (negative)
+      → Subjectivity: 0.75 (opinionated)
+
+   Use it for:  Comparing tone across speeches, parties, or media outlets.
+
+
+2. NOUN PHRASE EXTRACTION
+   What it does:  Pulls out the key "things" a text talks about —
+                  multi-word phrases like "climate change", "tax reform",
+                  or "national security."
+
+   Example:
+     "The president's new climate plan will create clean energy jobs."
+      → Noun phrases: ["president", "new climate plan", "clean energy jobs"]
+
+   Use it for:  Quickly identifying what topics a text focuses on.
+
+
+3. PART-OF-SPEECH TAGGING
+   What it does:  Labels every word as a noun, verb, adjective, etc.
+
+   Example:
+     "We must fight for freedom."
+      → We (pronoun), must (verb), fight (verb), for (preposition),
+         freedom (noun)
+
+   Use it for:  Analyzing rhetorical style. Does a speaker use lots of
+                action verbs ("fight", "build", "create") or lots of
+                adjectives ("dangerous", "radical", "historic")?
+
+
+4. WORD AND SENTENCE TOKENIZATION
+   What it does:  Splits text into individual words or sentences cleanly.
+
+   Use it for:  Preparing text for deeper analysis. Breaking a speech
+                into sentences so you can analyze each one separately.
+
+
+5. N-GRAMS (WORD COMBINATIONS)
+   What it does:  Finds common 2-word or 3-word combinations.
+
+   Example:
+     In a speech, the most common bigrams might be:
+       "clean energy" (5 times), "working families" (4 times)
+
+   Use it for:  Finding a speaker's talking points and repeated phrases.
+
+
+6. WORD FREQUENCY / WORD COUNTS
+   What it does:  Counts how many times each word appears.
+
+   Use it for:  Basic content analysis — what words dominate a text?
+
+
+HOW TO INSTALL TEXTBLOB
+-----------------------
+You only need to do this once. Open the terminal in Google Antigravity
+(Ctrl + `) and type these two commands:
+
+   pip install textblob
+   python -m textblob.download_corpora
+
+The first command installs the library. The second downloads language data
+it needs (word lists, dictionaries, etc). This may take a minute.
+
+
+HOW TO USE TEXTBLOB — THE BASICS
+---------------------------------
+Open a new Python file in Google Antigravity (or type "python" in the terminal).
+Here is the simplest possible example:
+
+   from textblob import TextBlob
+
+   text = TextBlob("The president gave an excellent speech today.")
+
+   print(text.sentiment)            # Shows polarity and subjectivity
+   print(text.noun_phrases)         # Shows key noun phrases
+   print(text.words)                # Shows individual words
+   print(text.sentences)            # Shows sentences
+   print(text.tags)                 # Shows part-of-speech tags
+
+That's it. Five lines, and you already have five different analyses.
+
+
+HOW TO ANALYZE A FILE
+---------------------
+To read a text file (like a speech) and analyze it:
+
+   from textblob import TextBlob
+
+   with open("my_speech.txt", "r") as f:
+       text = TextBlob(f.read())
+
+   print("Sentiment:", text.sentiment)
+   print("Noun phrases:", text.noun_phrases)
+
+
+WHAT DO THE PART-OF-SPEECH TAGS MEAN?
+--------------------------------------
+TextBlob uses standard abbreviations:
+
+   NN  = noun (singular)         "economy", "freedom"
+   NNS = noun (plural)           "taxes", "workers"
+   NNP = proper noun             "America", "Congress"
+   VB  = verb (base form)        "fight", "invest"
+   VBD = verb (past tense)       "fought", "invested"
+   VBG = verb (-ing form)        "fighting", "investing"
+   JJ  = adjective               "strong", "dangerous"
+   RB  = adverb                  "very", "quickly"
+   PRP = pronoun                 "we", "they", "our"
+
+
+LIMITATIONS — WHAT TEXTBLOB CANNOT DO
+--------------------------------------
+Be aware of these before using TextBlob in research:
+
+1. IT WAS TRAINED ON PRODUCT REVIEWS, NOT POLITICAL TEXT
+   The word "radical" might be negative in a review but neutral in
+   political science. The sentiment scores are approximate, not perfect.
+
+2. IT STRUGGLES WITH SARCASM AND NEGATION
+   "This is not a bad policy" should be slightly positive, but TextBlob
+   may score it negatively because it sees the word "bad."
+
+3. IT GIVES YOU NUMBERS, NOT UNDERSTANDING
+   A speech scored +0.15 is "slightly positive" — but TextBlob cannot
+   tell you WHY it's positive or what argument the speaker is making.
+
+4. IT WORKS BEST IN ENGLISH
+   TextBlob supports other languages for some features, but its sentiment
+   analysis is English-focused.
+
+Despite these limitations, TextBlob is a powerful starting point for
+automated content analysis, especially when combined with human judgment.
+
+
+WHAT IS "CONTENT ANALYSIS"? (QUICK REFRESHER)
+-----------------------------------------------
+Content analysis is a research method where you systematically categorize
+text to identify patterns. There are three main approaches:
+
+   MANUAL         A human reads each text and assigns codes from a codebook.
+                  Most accurate, but slow and expensive.
+
+   DICTIONARY     A computer counts specific keywords from a predefined list.
+                  Fast and 100% reproducible, but misses context.
+                  (This is what our dictionary_analysis.py does.)
+
+   NLP/AI         A computer uses language models to "understand" text.
+                  TextBlob sits here. Fast, context-aware, but imperfect.
+
+In real research, you often COMBINE methods — for example, using TextBlob
+for an initial pass on 10,000 articles, then manually coding a random
+sample of 200 to check accuracy. This is called VALIDATION.
+
+================================================================================
