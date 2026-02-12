@@ -12,9 +12,10 @@ Each section has:
   - WHAT YOU SHOULD SEE (expected output so you know it's working)
 
 BEFORE YOU START:
-  Open Google Antigravity and open THIS folder (the textblob_activity
-  folder). Go to File > Open Folder and select it. Everything you need
-  is inside this folder.
+  1. Open Google Antigravity
+  2. Go to File > Open Folder
+  3. Select the content_analysis_course folder (the one you cloned)
+  4. Your terminal will automatically be in the right place
 
 
 ================================================================================
@@ -87,7 +88,9 @@ WHY THIS WORKS:
 EXERCISE 1C: Coding a Speech Paragraph by Paragraph
 ------------------------------------------------------------------------
 
-Open the file called speech_climate.txt (in this folder).
+In the file explorer on the left side of Google Antigravity, open:
+  textblob_activity > speech_climate.txt
+
 For EACH paragraph, copy-paste it into this prompt:
 
     You are a content analysis coder for a political science research
@@ -166,10 +169,9 @@ HOW TO OPEN THE TERMINAL:
   In Google Antigravity, press Ctrl + ` (the backtick key, above Tab).
   A terminal panel will appear at the bottom of the screen.
 
-IMPORTANT: Make sure your terminal says the textblob_activity folder.
-  You should see something like:
-    PS C:\...\textblob_activity>
-  If not, the commands below will not find the files.
+CHECK: Your terminal should show something like:
+  PS C:\...\content_analysis_course>
+If it does, you are in the right place and the commands below will work.
 
 ------------------------------------------------------------------------
 EXERCISE 2A: Count the total words in a speech
@@ -177,7 +179,7 @@ EXERCISE 2A: Count the total words in a speech
 
 Type this in the terminal and press Enter:
 
-    (Get-Content .\speech_climate.txt | Measure-Object -Word).Words
+    (Get-Content .\textblob_activity\speech_climate.txt | Measure-Object -Word).Words
 
 WHAT YOU SHOULD SEE:
   A single number (around 450-500). This is the total word count.
@@ -188,7 +190,7 @@ EXERCISE 2B: Find the 20 most frequent words
 
 Type this in the terminal:
 
-    (Get-Content .\speech_climate.txt) -split '\W+' | Where-Object { $_.Length -gt 3 } | Group-Object -NoElement | Sort-Object Count -Descending | Select-Object -First 20
+    (Get-Content .\textblob_activity\speech_climate.txt) -split '\W+' | Where-Object { $_.Length -gt 3 } | Group-Object -NoElement | Sort-Object Count -Descending | Select-Object -First 20
 
 WHAT YOU SHOULD SEE:
   A list of the 20 most common words (longer than 3 letters) with counts.
@@ -203,14 +205,18 @@ EXERCISE 2C: Count specific political keywords
 
 Type this in the terminal (all on one line):
 
-    $text = Get-Content .\speech_climate.txt -Raw; foreach ($word in @("climate","economy","jobs","future","energy","security","freedom","tax")) { $count = ([regex]::Matches($text, "\b$word\b", 'IgnoreCase')).Count; Write-Output "${word}: $count" }
+    $text = Get-Content .\textblob_activity\speech_climate.txt -Raw; foreach ($word in @("climate","economy","jobs","future","energy","security","freedom","tax")) { $count = ([regex]::Matches($text, "\b$word\b", 'IgnoreCase')).Count; Write-Output "${word}: $count" }
 
 WHAT YOU SHOULD SEE:
   A list like:
-    climate: 5
-    economy: 2
-    jobs: 3
-    ...
+    climate: 3
+    economy: 0
+    jobs: 2
+    future: 2
+    energy: 3
+    security: 1
+    freedom: 0
+    tax: 0
 
   These numbers are 100% reproducible. Every student gets the same counts.
 
@@ -220,7 +226,7 @@ EXERCISE 2D: Compare keywords across two speeches
 
 Type this in the terminal (all on one line):
 
-    $text1 = Get-Content .\speech_climate.txt -Raw; $text2 = Get-Content .\speech_economy.txt -Raw; Write-Output "Keyword | Climate | Economy"; Write-Output "--------+---------+--------"; foreach ($w in @("climate","economy","jobs","future","energy","security","tax","growth")) { $c1 = ([regex]::Matches($text1, "\b$w\b", 'IgnoreCase')).Count; $c2 = ([regex]::Matches($text2, "\b$w\b", 'IgnoreCase')).Count; Write-Output "$w | $c1 | $c2" }
+    $text1 = Get-Content .\textblob_activity\speech_climate.txt -Raw; $text2 = Get-Content .\textblob_activity\speech_economy.txt -Raw; Write-Output "Keyword | Climate | Economy"; Write-Output "--------+---------+--------"; foreach ($w in @("climate","economy","jobs","future","energy","security","tax","growth")) { $c1 = ([regex]::Matches($text1, "\b$w\b", 'IgnoreCase')).Count; $c2 = ([regex]::Matches($text2, "\b$w\b", 'IgnoreCase')).Count; Write-Output "$w | $c1 | $c2" }
 
 WHAT YOU SHOULD SEE:
   A table comparing how often each keyword appears in each speech.
@@ -307,14 +313,15 @@ EXERCISE 3B: Analyzing a Full Speech (Write a Script)
 ------------------------------------------------------------------------
 
 STEP 1 — In Google Antigravity, click File > New File
-STEP 2 — Save it as: my_analysis.py (save it in this same folder)
+STEP 2 — Save it as: my_analysis.py
+         Save it inside the textblob_activity folder
 STEP 3 — Paste this code into the file:
 
 ---------- COPY EVERYTHING BELOW THIS LINE ----------
 
 from textblob import TextBlob
 
-with open("speech_climate.txt", "r") as f:
+with open("textblob_activity/speech_climate.txt", "r") as f:
     speech = f.read()
 
 paragraphs = [p.strip() for p in speech.split("\n\n") if p.strip()]
@@ -351,7 +358,7 @@ for phrase in full_blob.noun_phrases[:15]:
 
 STEP 4 — In the terminal, type:
 
-    python my_analysis.py
+    python textblob_activity\my_analysis.py
 
 WHAT YOU SHOULD SEE:
   A table showing each paragraph's sentiment. The speech should start
@@ -361,7 +368,8 @@ WHAT YOU SHOULD SEE:
 EXERCISE 3C: Comparing Media Headlines (Write a Script)
 ------------------------------------------------------------------------
 
-STEP 1 — Create a new file called: headline_analysis.py (in this folder)
+STEP 1 — Create a new file called: headline_analysis.py
+         Save it inside the textblob_activity folder
 STEP 2 — Paste this code:
 
 ---------- COPY EVERYTHING BELOW THIS LINE ----------
@@ -409,7 +417,7 @@ for outlet, headline in headlines.items():
 
 STEP 3 — Run it:
 
-    python headline_analysis.py
+    python textblob_activity\headline_analysis.py
 
 WHAT YOU SHOULD SEE:
   Fox News & Breitbart → NEGATIVE (words like "crush", "radical", "job-killing")
